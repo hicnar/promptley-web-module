@@ -1,0 +1,56 @@
+<script type="text/javascript">
+
+    function SpeedSliderHandler(id) {
+
+        this.pressed = false;
+        this.previousValue = 0;
+
+        this.onPointerMove = function() {
+            const currentValue = document.getElementById(id).value
+            if (this.pressed === true && this.previousValue !== currentValue) {
+                _onSeekSliderAction(parseInt(document.getElementById(id).value));
+                this.previousValue = currentValue;
+            }
+        }
+
+        function _onSeekSliderAction(speed) {
+            $.ajax({
+                type: "POST",
+                url: "/api/v1/sliders/speed",
+                data: JSON.stringify({"speed": speed}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                error: function(errMsg) {
+                    if (errMsg.status !== 200) {
+                        alert('failure: ' + JSON.stringify(errMsg));
+                    }
+                }
+            })
+        }
+
+        this.onPointerDown = function() {
+           this.pressed = true;
+        }
+
+        this.onPointerUp = function() {
+            this.onPointerMove();
+            this.pressed = false;
+        }
+
+        return this;
+    }
+
+    let _sph = new SpeedSliderHandler('speed-slider-id');
+
+</script>
+
+<div>
+{{#scrollers}}
+    {{#speed}}
+        <input id="speed-slider-id" type="range" min="{{min}}" max="{{max}}" value="{{value}}" step="{{step}}"
+               onmousedown="_sph.onPointerDown();"  onmouseup="_sph.onPointerUp();"  onmousemove="_sph.onPointerMove();"
+               ontouchstart="_sph.onPointerDown();" ontouchend="_sph.onPointerUp();" ontouchmove="_sph.onPointerMove();"
+        />
+    {{/speed}}
+{{/scrollers}}
+</div>

@@ -1,0 +1,57 @@
+<script type="text/javascript">
+
+    function SeekSliderHandler(id) {
+
+        this.pressed = false;
+        this.previousValue = 0;
+
+        this.onPointerMove = function() {
+            const currentValue = document.getElementById(id).value
+            if (this.pressed === true && this.previousValue !== currentValue) {
+                _onSeekSliderAction(parseInt(document.getElementById(id).value));
+                this.previousValue = currentValue;
+            }
+        }
+
+        function _onSeekSliderAction(speed) {
+            $.ajax({
+                type: "POST",
+                url: "/api/v1/sliders/seek",
+                data: JSON.stringify({"speed": speed}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                error: function(errMsg) {
+                    if (errMsg.status !== 200) {
+                        alert('failure: ' + JSON.stringify(errMsg));
+                    }
+                }
+            })
+        }
+
+        this.onPointerDown = function() {
+           this.pressed = true;
+        }
+
+        this.onPointerUp = function() {
+            document.getElementById(id).value = 0;
+            this.onPointerMove();
+            this.pressed = false;
+        }
+
+        return this;
+    }
+
+    let _ssh = new SeekSliderHandler('seek-slider-id');
+
+</script>
+
+<div>
+{{#scrollers}}
+    {{#seek}}
+        <input id="seek-slider-id" type="range" min="{{min}}" max="{{max}}" value="{{value}}" step="{{step}}"
+               onmousedown="_ssh.onPointerDown();"  onmouseup="_ssh.onPointerUp();"  onmousemove="_ssh.onPointerMove();"
+               ontouchstart="_ssh.onPointerDown();" ontouchend="_ssh.onPointerUp();" ontouchmove="_ssh.onPointerMove();"
+        />
+    {{/seek}}
+{{/scrollers}}
+</div>

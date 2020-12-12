@@ -1,0 +1,10 @@
+<div>
+  <div class="round-button {{#hasTooltip}}tooltip{{/hasTooltip}}">
+    {{#hasTooltip}}
+      <span class="tooltip-text">{{tooltip}}</span>
+    {{/hasTooltip}}
+    <div class="round-button-circle">
+      <a onclick=onButtonPressed('{{action}}') class="round-button">{{label}}</a>
+    </div>
+  </div>
+</div>
