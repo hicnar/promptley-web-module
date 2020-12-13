@@ -34,6 +34,17 @@ class AppServer with HandlersSupport {
           res..contentType = MediaType.parse('text/css')
              ..write(content);
         })
+        ..get(r'.*.jpg|.*.jpeg|.*.png|.*.gif|.*.tiff|.*.ico', (req, res) async {
+          try {
+            final uri = req.uri.toString();
+            final imageFile = fs.file('web/images$uri');
+            res..contentType = MediaType.parse('image/${uri.split('.').last}')
+               ..contentLength = await imageFile.length()
+               ..add(await imageFile.readAsBytesSync());
+          } catch (e) {
+            res.statusCode = 404;
+          }
+        })
         ..group('', (pages) {
           pages
             ..get('/', homeWww.doGet)
