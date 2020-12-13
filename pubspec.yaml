@@ -12,5 +12,8 @@ environment:
 dev_dependencies:
   pedantic: ^1.9.0
   angel_framework: ^2.1.1
+  angel_hot: ^2.0.0
   pretty_logging: 1.0.0
+  optional: ^5.0.0+1
+  mustache_template: ^1.0.0+1
 
