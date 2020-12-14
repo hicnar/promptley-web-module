@@ -6,14 +6,12 @@ description: A simple command-line application.
 environment:
   sdk: '>=2.10.0 <3.0.0'
 
-#dependencies:
-#  path: ^1.7.0
-
-dev_dependencies:
+dependencies:
   pedantic: ^1.9.0
   angel_framework: ^2.1.1
   angel_hot: ^2.0.0
   pretty_logging: 1.0.0
-  optional: ^5.0.0+1
   mustache_template: ^1.0.0+1
+
+#dev_dependencies:
 
