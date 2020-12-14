@@ -11,6 +11,15 @@ import 'handlers/handlers_support.dart';
 
 class AppServer with HandlersSupport {
 
+  final _mimeMap = {
+    'jpg': 'image/jpeg',
+    'jpeg': 'image/jpeg',
+    'png': 'image/png',
+    'gif': 'image/gif',
+    'tiff': 'image/tiff',
+    'ico': 'image/vnd.microsoft.icon'
+  };
+
   Angel _app;
   static AppServer _instance;
 
@@ -38,7 +47,7 @@ class AppServer with HandlersSupport {
           try {
             final uri = req.uri.toString();
             final imageFile = fs.file('web/images$uri');
-            res..contentType = MediaType.parse('image/${uri.split('.').last}')
+            res..contentType = MediaType.parse(_mimeMap[uri.split('.').last])
                ..contentLength = await imageFile.length()
                ..add(await imageFile.readAsBytesSync());
           } catch (e) {
