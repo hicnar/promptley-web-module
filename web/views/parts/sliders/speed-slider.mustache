@@ -45,12 +45,12 @@
 </script>
 
 <div>
-{{#scrollers}}
+{{#sliders}}
     {{#speed}}
         <input id="speed-slider-id" type="range" min="{{min}}" max="{{max}}" value="{{value}}" step="{{step}}"
                onmousedown="_sph.onPointerDown();"  onmouseup="_sph.onPointerUp();"  onmousemove="_sph.onPointerMove();"
                ontouchstart="_sph.onPointerDown();" ontouchend="_sph.onPointerUp();" ontouchmove="_sph.onPointerMove();"
         />
     {{/speed}}
-{{/scrollers}}
+{{/sliders}}
 </div>

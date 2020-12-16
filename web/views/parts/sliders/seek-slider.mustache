@@ -46,12 +46,12 @@
 </script>
 
 <div>
-{{#scrollers}}
+{{#sliders}}
     {{#seek}}
         <input id="seek-slider-id" type="range" min="{{min}}" max="{{max}}" value="{{value}}" step="{{step}}"
                onmousedown="_ssh.onPointerDown();"  onmouseup="_ssh.onPointerUp();"  onmousemove="_ssh.onPointerMove();"
                ontouchstart="_ssh.onPointerDown();" ontouchend="_ssh.onPointerUp();" ontouchmove="_ssh.onPointerMove();"
         />
     {{/seek}}
-{{/scrollers}}
+{{/sliders}}
 </div>

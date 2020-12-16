@@ -33,7 +33,7 @@ class RemoteHandler extends WebRequestHandler{
 
         'web-button-6' : _buttonJson('digit-6', 'Skocz na Koniec', '', false),
       },
-      'scrollers': {
+      'sliders': {
         'seek' : {
           'min': -300,
           'max': 300,
