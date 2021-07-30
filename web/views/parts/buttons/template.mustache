@@ -12,7 +12,7 @@
             }
 
             function onPointDown() {
-                pressTimer = window.setTimeout(function() {
+                pressTimer = setTimeout(function() {
                     intervalId = setInterval(function() {
                         onButtonPressed('{{action}}');
                     }, 100);
