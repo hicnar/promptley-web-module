@@ -56,8 +56,6 @@ class AppServer with HandlersSupport {
         })
         ..group('', (pages) {
           pages
-            ..get('/', homeWww.doGet)
-            ..get('/index.html', homeWww.doGet)
             ..group('/remote', (remote) {
               remote.get('', remoteWww.doGet);
             })

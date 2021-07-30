@@ -1,11 +1,42 @@
 <body>
-  {{> sliders/speed-slider}}
-  {{> sliders/seek-slider}}
-  {{> buttons/web-button-0}}
-  {{> buttons/web-button-1}}
-  {{> buttons/web-button-2}}
-  {{> buttons/web-button-3}}
-  {{> buttons/web-button-4}}
-  {{> buttons/web-button-5}}
-  {{> buttons/web-button-6}}
+
+  <table>
+      <tr>
+          <td rowspan="5">
+              {{> sliders/seek-slider}}
+          </td>
+      </tr>
+      <tr style="height: 20%">
+          <td>
+              {{> buttons/web-button-0}}
+          </td>
+          <td>
+              {{> buttons/web-button-1}}
+          </td>
+      </tr>
+      <tr style="height: 30%">
+          <td colspan="2">
+              {{> buttons/web-button-2}}
+          </td>
+      </tr>
+      <tr style="height: 20%">
+          <td>
+              {{> buttons/web-button-3}}
+          </td>
+          <td>
+              {{> buttons/web-button-4}}
+          </td>
+      </tr>
+      <tr style="height: 20%">
+          <td>
+              {{> buttons/web-button-5}}
+          </td>
+          <td>
+              {{> buttons/web-button-6}}
+          </td>
+      </tr>
+  </table>
+
+  <span id="status-bar" style="font-size: 25px;color: orangered"></span>
+
 </body>

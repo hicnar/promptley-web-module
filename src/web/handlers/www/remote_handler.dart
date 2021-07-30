@@ -24,10 +24,10 @@ class RemoteHandler extends WebRequestHandler{
             'Skacze do poprzedniego cue punktu lub przewija 75% ekranu w dół, jeśli w skrypcie nie ma zdefiniowanych cue punktów', true),
 
         'web-button-3' : _buttonJson('digit-3', 'Zwiększ Prędkość',
-            'Zwiększa prędkość o jeden punkt, albo przewija 10% ekranu w górę jeśli skrypt nie jest aktualnie odtwarzany', true),
+            'Zwiększa prędkość o jeden punkt, albo przewija 10% ekranu w górę jeśli skrypt nie jest aktualnie odtwarzany', true, repeatKey: true),
 
         'web-button-4' : _buttonJson('digit-4', 'Zmniejsz Prędkość',
-            'Zmniejsza prędkość o jeden punkt, albo przewija 10% ekranu w dół jeśli skrypt nie jest aktualnie odtwarzany', true),
+            'Zmniejsza prędkość o jeden punkt, albo przewija 10% ekranu w dół jeśli skrypt nie jest aktualnie odtwarzany', true, repeatKey: true),
 
         'web-button-5' : _buttonJson('digit-5', 'Skocz na Początek', '', false),
 
@@ -50,11 +50,12 @@ class RemoteHandler extends WebRequestHandler{
     });
   }
 
-  Map<String, dynamic> _buttonJson(String action, String label, String tooltip, bool hasTooltip) => {
+  Map<String, dynamic> _buttonJson(String action, String label, String tooltip, bool hasTooltip, {bool repeatKey = false}) => {
       'action': action,
       'label': label,
       'tooltip': tooltip,
       'hasTooltip': hasTooltip,
+      'repeatKey': repeatKey
     };
 }
 

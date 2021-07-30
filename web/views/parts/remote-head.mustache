@@ -5,10 +5,16 @@
   <meta http-equiv="Expires" content="0" />
   <title>{{title}}</title>
   <link type="text/css" rel="stylesheet" href="stylesheet.css">
-  <link type="text/css" rel="stylesheet" href="tooltip.css">
-  <link type="text/css" rel="stylesheet" href="web-button.css">
-  <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
   <script type="text/javascript">
+
+    function onMouseDown(message){
+        $("#status-bar").text(message);
+        setTimeout(function(){
+          $("#status-bar").text("");
+        }, 3000);
+    }
+
     function onButtonPressed(action) {
         $.ajax({
             type: "POST",

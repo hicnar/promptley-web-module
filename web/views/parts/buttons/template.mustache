@@ -1,10 +1,30 @@
-<div>
-  <div class="round-button {{#hasTooltip}}tooltip{{/hasTooltip}}">
-    {{#hasTooltip}}
-      <span class="tooltip-text">{{tooltip}}</span>
-    {{/hasTooltip}}
-    <div class="round-button-circle">
-      <a onclick=onButtonPressed('{{action}}') class="round-button">{{label}}</a>
-    </div>
-  </div>
+<div style="width: 100%;height: 100%">
+    <button id="{{action}}" style="width: 100%;height: 100%" class="round_corners no_select button" onclick=onButtonPressed('{{action}}')>{{label}}</button>
+    {{#repeatKey}}
+        <script type="text/javascript">
+
+            var pressTimer;
+            var intervalId;
+
+            function onPointUp() {
+                clearInterval(intervalId);
+                clearTimeout(pressTimer);
+            }
+
+            function onPointDown() {
+                pressTimer = window.setTimeout(function() {
+                    intervalId = setInterval(function() {
+                        onButtonPressed('{{action}}');
+                    }, 100);
+                }, 500);
+            }
+
+            $('#'+'{{action}}')
+              .on('mouseup', onPointUp)
+              .on('mousedown', onPointDown)
+              .on('touchend', onPointUp)
+              .on('touchstart', onPointDown);
+        </script>
+    {{/repeatKey}}
+
 </div>

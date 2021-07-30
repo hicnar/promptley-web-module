@@ -2,7 +2,6 @@ import 'api/button_handler.dart' as api;
 import 'api/seek_slider_handler.dart' as api;
 import 'api/speed_slider_handler.dart' as api;
 import 'web_request_handler.dart';
-import 'www/home_handler.dart' as www;
 import 'www/remote_handler.dart' as www;
 
 mixin HandlersSupport {
@@ -13,7 +12,6 @@ mixin HandlersSupport {
   static final _speedSliderApi = api.SpeedSliderHandler();
 
   /// www handler instances
-  static final _home = www.HomeHandler();
   static final _remote = www.RemoteHandler();
 
   /// api handlers
@@ -22,6 +20,5 @@ mixin HandlersSupport {
   WebRequestHandler speedSliderApi = _speedSliderApi;
 
   /// web handlers
-  WebRequestHandler homeWww = _home;
-  WebRequestHandler remoteWww = _remote;
+   WebRequestHandler remoteWww = _remote;
 }

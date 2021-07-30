@@ -22,7 +22,7 @@
                 dataType: "json",
                 error: function(errMsg) {
                     if (errMsg.status !== 200) {
-                        alert('failure: ' + JSON.stringify(errMsg));
+                        console.log('failure: ' + JSON.stringify(errMsg));
                     }
                 }
             })

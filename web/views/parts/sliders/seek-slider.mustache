@@ -6,10 +6,12 @@
         this.previousValue = 0;
 
         this.onPointerMove = function() {
-            const currentValue = document.getElementById(id).value
-            if (this.pressed === true && this.previousValue !== currentValue) {
-                _onSeekSliderAction(parseInt(document.getElementById(id).value));
-                this.previousValue = currentValue;
+            if (this.pressed) {
+                const currentValue = document.getElementById(id).value;
+                if (this.pressed === true && this.previousValue !== currentValue) {
+                    _onSeekSliderAction(parseInt(currentValue));
+                    this.previousValue = currentValue;
+                }
             }
         }
 
@@ -22,7 +24,7 @@
                 dataType: "json",
                 error: function(errMsg) {
                     if (errMsg.status !== 200) {
-                        alert('failure: ' + JSON.stringify(errMsg));
+                        console.log('failure: ' + JSON.stringify(errMsg));
                     }
                 }
             })
@@ -33,9 +35,13 @@
         }
 
         this.onPointerUp = function() {
-            document.getElementById(id).value = 0;
-            this.onPointerMove();
-            this.pressed = false;
+            const thiz = this;
+            // Without that little setTimeout trick the range slider will not return to the default position on Firefox
+            setTimeout(function() {
+                document.getElementById(id).value = 0;
+                thiz.onPointerMove();
+                thiz.pressed = false;
+            }, 50);
         }
 
         return this;
@@ -48,8 +54,8 @@
 <div>
 {{#sliders}}
     {{#seek}}
-        <input id="seek-slider-id" type="range" min="{{min}}" max="{{max}}" value="{{value}}" step="{{step}}"
-               onmousedown="_ssh.onPointerDown();"  onmouseup="_ssh.onPointerUp();"  onmousemove="_ssh.onPointerMove();"
+        <input id="seek-slider-id" orient="vertical" type="range" min="{{min}}" max="{{max}}" step="{{step}}"
+               onmousedown="_ssh.onPointerDown();" onmouseup="_ssh.onPointerUp();"  onmousemove="_ssh.onPointerMove();"
                ontouchstart="_ssh.onPointerDown();" ontouchend="_ssh.onPointerUp();" ontouchmove="_ssh.onPointerMove();"
         />
     {{/seek}}
