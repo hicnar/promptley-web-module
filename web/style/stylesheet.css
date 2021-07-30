@@ -1,7 +1,8 @@
 html, body {
-  min-height: 100vh;
+  height: 100vh;
   width: 95%;
 }
+
 body {
   background-color: lightgrey;
   position: fixed;
@@ -37,6 +38,8 @@ button {
   background: white;
   font-size: 40px;
   font-weight: bold;
+  height: 100%;
+  width: 100%;
 }
 
 .button:active {
@@ -56,6 +59,5 @@ button {
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
