@@ -5,7 +5,7 @@
         this.pressed = false;
         this.previousValue = 0;
 
-        this.onPointerMove = function() {
+        this.onPointerMove = () => {
             if (this.pressed) {
                 const currentValue = document.getElementById(id).value;
                 if (this.pressed === true && this.previousValue !== currentValue) {
@@ -30,14 +30,14 @@
             })
         }
 
-        this.onPointerDown = function() {
-           this.pressed = true;
+        this.onPointerDown = () => {
+            this.pressed = true;
         }
 
-        this.onPointerUp = function() {
+        this.onPointerUp = () => {
             const thiz = this;
             // Without that little setTimeout trick the range slider will not return to the default position on Firefox
-            setTimeout(function() {
+            setTimeout(() => {
                 document.getElementById(id).value = 0;
                 thiz.onPointerMove();
                 thiz.pressed = false;
@@ -52,12 +52,12 @@
 </script>
 
 <div>
-{{#sliders}}
-    {{#seek}}
-        <input id="seek-slider-id" orient="vertical" type="range" min="{{min}}" max="{{max}}" step="{{step}}"
-               onmousedown="_ssh.onPointerDown();" onmouseup="_ssh.onPointerUp();"  onmousemove="_ssh.onPointerMove();"
-               ontouchstart="_ssh.onPointerDown();" ontouchend="_ssh.onPointerUp();" ontouchmove="_ssh.onPointerMove();"
-        />
-    {{/seek}}
-{{/sliders}}
+    {{#sliders}}
+        {{#seek}}
+            <input id="seek-slider-id" orient="vertical" type="range" min="{{min}}" max="{{max}}" step="{{step}}"
+                   onmousedown="_ssh.onPointerDown();" onmouseup="_ssh.onPointerUp();"  onmousemove="_ssh.onPointerMove();"
+                   ontouchstart="_ssh.onPointerDown();" ontouchend="_ssh.onPointerUp();" ontouchmove="_ssh.onPointerMove();"
+            />
+        {{/seek}}
+    {{/sliders}}
 </div>

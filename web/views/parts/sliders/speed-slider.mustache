@@ -5,7 +5,7 @@
         this.pressed = false;
         this.previousValue = 0;
 
-        this.onPointerMove = function() {
+        this.onPointerMove = () => {
             const currentValue = document.getElementById(id).value
             if (this.pressed === true && this.previousValue !== currentValue) {
                 _onSeekSliderAction(parseInt(document.getElementById(id).value));
@@ -28,11 +28,11 @@
             })
         }
 
-        this.onPointerDown = function() {
-           this.pressed = true;
+        this.onPointerDown = () => {
+            this.pressed = true;
         }
 
-        this.onPointerUp = function() {
+        this.onPointerUp = () => {
             this.onPointerMove();
             this.pressed = false;
         }
@@ -45,12 +45,12 @@
 </script>
 
 <div>
-{{#sliders}}
-    {{#speed}}
-        <input id="speed-slider-id" type="range" min="{{min}}" max="{{max}}" value="{{value}}" step="{{step}}"
-               onmousedown="_sph.onPointerDown();"  onmouseup="_sph.onPointerUp();"  onmousemove="_sph.onPointerMove();"
-               ontouchstart="_sph.onPointerDown();" ontouchend="_sph.onPointerUp();" ontouchmove="_sph.onPointerMove();"
-        />
-    {{/speed}}
-{{/sliders}}
+    {{#sliders}}
+        {{#speed}}
+            <input id="speed-slider-id" type="range" min="{{min}}" max="{{max}}" value="{{value}}" step="{{step}}"
+                   onmousedown="_sph.onPointerDown();"  onmouseup="_sph.onPointerUp();"  onmousemove="_sph.onPointerMove();"
+                   ontouchstart="_sph.onPointerDown();" ontouchend="_sph.onPointerUp();" ontouchmove="_sph.onPointerMove();"
+            />
+        {{/speed}}
+    {{/sliders}}
 </div>
