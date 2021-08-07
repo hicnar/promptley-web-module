@@ -33,12 +33,13 @@ input[type=range]::-webkit-slider-thumb {
 
 button {
   background: white;
-  font-size: 40px;
+  font-size: 4vw;
   font-weight: bold;
   height: 98%;
   width: 100%;
   outline: none;
   text-decoration: none;
+  overflow: -moz-scrollbars-vertical;
 }
 
 button.mac-button {
@@ -62,35 +63,29 @@ button.mac-button::before {
   border-radius: 0.5em;
   background: white;
   box-shadow: 0 0 0 1px black;
-  transform: translate3d(0, .15em, -1em);
+  transform: translate3d(0, 6px, -3px);
 }
 
 @media (hover: hover) and (pointer: fine) {
   button.mac-button:hover {
     background: #f3f3f3;
-    transform: translate(0, .05em);
+    transform: translate(0, 2px);
   }
   button.mac-button:active {
     background-color: #f3f3f3;
     color: black;
-    transform: translate3d(0, .08em, -1em);
+    transform: translate3d(0, 4px, -2px);
   }
 }
 
 button.mac-button:hover::before {
   box-shadow: 0 0 0 1px black;
-  transform: translate3d(0, .15em, -1em);
+  transform: translate3d(0, 6px, -3px);
 }
 
 button.mac-button:active {
   background-color: #f3f3f3;
   color: black;
-}
-
-.rounded_corners {
-  border-radius: 25px;
-  border: 1px solid black;
-  padding: 20px;
 }
 
 .no_select {
@@ -103,11 +98,19 @@ button.mac-button:active {
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
+/*noinspection CssReplaceWithShorthandSafely*/
 .status-message {
   padding-top: 5px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 5px;
+}
+
+.status-box-div {
+  background-color: beige;
+  border-radius: 25px;
+  border: 1px solid black;
+  padding: 20px;
 }
 
 .status-message-div {
