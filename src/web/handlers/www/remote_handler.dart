@@ -12,7 +12,7 @@ class RemoteHandler extends WebRequestHandler{
   @override
   FutureOr<dynamic> doGet(req, res) async {
 
-    return res.render('remote', {
+    final remoteJson = {
       'title' : 'Webowy pilot zdalnego sterowania',
       'buttons' : {
         'web-button-0' : _buttonJson('digit-0', 'Start/Stop','', false),
@@ -47,7 +47,14 @@ class RemoteHandler extends WebRequestHandler{
           'step': 1
         }
       }
-    });
+    };
+
+    remoteJson['statusBox'] = {
+      'message': "Aby przypisać akcje do pilota internetowego, w aplikacji przejdź do Ustawienia > Pilot, następnie najpierw wybierz akcję, po czym naciśnij przycisk na pilocie internetowym, do którego chcesz przypisać daną akcję.",
+      'hint': "Wskazówka"
+    };
+
+    return res.render('remote', remoteJson);
   }
 
   Map<String, dynamic> _buttonJson(String action, String label, String tooltip, bool hasTooltip, {bool repeatKey = false}) => {

@@ -1,11 +1,10 @@
 html, body {
   height: 100vh;
-  width: 95%;
+  width: 98%;
 }
 
 body {
   background-color: lightgrey;
-  position: fixed;
 }
 
 table {
@@ -32,20 +31,63 @@ input[type=range]::-webkit-slider-thumb {
   cursor: pointer;
 }
 
-.button {
+button {
   background: white;
   font-size: 40px;
   font-weight: bold;
-  height: 100%;
+  height: 98%;
   width: 100%;
+  outline: none;
+  text-decoration: none;
 }
 
-.button:active {
+button.mac-button {
+  border: 1px solid #454545;
+  border-radius: 0.5em;
+  padding: 20px;
+  color: #382b22;
+  background: white;
+  transform-style: preserve-3d;
+}
+
+button.mac-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5em;
+  background: white;
+  box-shadow: 0 0 0 1px black;
+  transform: translate3d(0, .15em, -1em);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button.mac-button:hover {
+    background: #f3f3f3;
+    transform: translate(0, .05em);
+  }
+  button.mac-button:active {
+    background-color: #f3f3f3;
+    color: black;
+    transform: translate3d(0, .08em, -1em);
+  }
+}
+
+button.mac-button:hover::before {
+  box-shadow: 0 0 0 1px black;
+  transform: translate3d(0, .15em, -1em);
+}
+
+button.mac-button:active {
   background-color: #f3f3f3;
   color: black;
 }
 
-.round_corners {
+.rounded_corners {
   border-radius: 25px;
   border: 1px solid black;
   padding: 20px;
@@ -54,8 +96,32 @@ input[type=range]::-webkit-slider-thumb {
 .no_select {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
+  /*noinspection CssUnknownProperty*/
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.status-message {
+  padding-top: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+}
+
+.status-message-div {
+  display: flex;
+  text-align: left;
+}
+
+.hint-div {
+  text-align: left;
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+.button-div {
+  width: 100%;
+  height: 100%;
 }

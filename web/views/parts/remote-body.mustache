@@ -1,38 +1,50 @@
-<body>
-    <table>
-        <tr>
-            <td rowspan="5" >
-                {{> sliders/seek-slider}}
-            </td>
-        </tr>
-        <tr>
-            <td style="height: 20vh;width: 45vw">
-                {{> buttons/web-button-0}}
-            </td>
-            <td style="height: 20vh;width: 45vw">
-                {{> buttons/web-button-1}}
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="height: 30vh">
-                {{> buttons/web-button-2}}
-            </td>
-        </tr>
-        <tr>
-            <td style="height: 20vh">
-                {{> buttons/web-button-3}}
-            </td>
-            <td  style="height: 20vh">
-                {{> buttons/web-button-4}}
-            </td>
-        </tr>
-        <tr>
-            <td style="height: 20vh">
-                {{> buttons/web-button-5}}
-            </td>
-            <td style="height: 20vh">
-                {{> buttons/web-button-6}}
-            </td>
-        </tr>
-    </table>
+<body style="position: {{^statusBox}}fixed; width: 95%{{/statusBox}}">
+
+{{#statusBox}}
+    <div style="background-color: beige;" class="rounded_corners">
+        <div class="hint-div">
+            <span style="font-weight: bold">{{hint}}</span>
+        </div>
+        <div class="status-message-div">
+            <span class="status-message">{{message}}</span>
+        </div>
+    </div>
+{{/statusBox}}
+
+<table>
+    <tr>
+        <td rowspan="5" >
+            {{> sliders/seek-slider}}
+        </td>
+    </tr>
+    <tr>
+        <td style="height: 20vh;width: 45vw">
+            {{> buttons/web-button-0}}
+        </td>
+        <td style="height: 20vh;width: 45vw">
+            {{> buttons/web-button-1}}
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="height: 30vh">
+            {{> buttons/web-button-2}}
+        </td>
+    </tr>
+    <tr>
+        <td style="height: 20vh">
+            {{> buttons/web-button-3}}
+        </td>
+        <td  style="height: 20vh">
+            {{> buttons/web-button-4}}
+        </td>
+    </tr>
+    <tr>
+        <td style="height: 20vh">
+            {{> buttons/web-button-5}}
+        </td>
+        <td style="height: 20vh">
+            {{> buttons/web-button-6}}
+        </td>
+    </tr>
+</table>
 </body>
