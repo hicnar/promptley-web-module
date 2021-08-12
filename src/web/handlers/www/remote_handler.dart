@@ -15,23 +15,23 @@ class RemoteHandler extends WebRequestHandler{
     final remoteJson = {
       'title' : 'Webowy pilot zdalnego sterowania',
       'buttons' : {
-        'web-button-0' : _buttonJson('digit-0', 'Start/Stop','', false),
+        'web-button-0' : _buttonJson('digit-0', 'Jump To The Beginning','', false),
 
-        'web-button-1' : _buttonJson('digit-1', 'Następny Cue Punkt',
+        'web-button-1' : _buttonJson('digit-1', 'Skocz na Koniec',
             'Skacze do następnego cue punktu lub przewija 75% ekranu w górę, jeśli w skrypcie nie ma zdefiniowanych cue punktów', true),
 
-        'web-button-2' : _buttonJson('digit-2', 'Poprzedni Cue Punkt',
+        'web-button-2' : _buttonJson('digit-2', 'Start/Stop',
             'Skacze do poprzedniego cue punktu lub przewija 75% ekranu w dół, jeśli w skrypcie nie ma zdefiniowanych cue punktów', true),
 
-        'web-button-3' : _buttonJson('digit-3', 'Zwiększ Prędkość',
+        'web-button-3' : _buttonJson('digit-3', 'Następny Cue Point',
             'Zwiększa prędkość o jeden punkt, albo przewija 10% ekranu w górę jeśli skrypt nie jest aktualnie odtwarzany', true, repeatKey: true),
 
-        'web-button-4' : _buttonJson('digit-4', 'Zmniejsz Prędkość',
+        'web-button-4' : _buttonJson('digit-4', 'Zwiększ Prędkość',
             'Zmniejsza prędkość o jeden punkt, albo przewija 10% ekranu w dół jeśli skrypt nie jest aktualnie odtwarzany', true, repeatKey: true),
 
-        'web-button-5' : _buttonJson('digit-5', 'Skocz na Początek', '', false),
+        'web-button-5' : _buttonJson('digit-5', 'Poprzedni Cue Point', '', false),
 
-        'web-button-6' : _buttonJson('digit-6', 'Skocz na Koniec', '', false),
+        'web-button-6' : _buttonJson('digit-6', 'Zmniejsz Prędkość', '', false),
       },
       'sliders': {
         'seek' : {
